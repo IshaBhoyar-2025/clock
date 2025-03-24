@@ -5,7 +5,7 @@ import { Play, Pause, StopCircle } from "lucide-react";
 
 export default function HomeComponent() {
   const [mode, setMode] = useState<"clock" | "stopwatch" | "countdown">("clock");
-  const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState<Date | null>(null);
   const [stopwatchTime, setStopwatchTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -91,10 +91,10 @@ export default function HomeComponent() {
     return `${hours}:${mins}:${secs}.${ms}`;
   };
 
-  const hours = (time.getHours() % 12 || 12).toString().padStart(2, "0");
-  const minutes = time.getMinutes().toString().padStart(2, "0");
-  const seconds = time.getSeconds().toString().padStart(2, "0");
-  const period = time.getHours() < 12 ? "AM" : "PM";
+  const hours = time ? (time.getHours() % 12 || 12).toString().padStart(2, "0") : "00";
+  const minutes = time ? (time.getMinutes().toString().padStart(2, "0")):"00";
+  const seconds = time ? (time.getSeconds().toString().padStart(2, "0")):"00";
+  const period = time && time.getHours() < 12 ? "AM" : "PM";
 
 
   return (
