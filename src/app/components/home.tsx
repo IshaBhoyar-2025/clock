@@ -98,8 +98,8 @@ export default function HomeComponent() {
 
 
   return (
-    <div className="flex flex-col items-center space-y-6 p-6">
-      <div className="flex space-x-4">
+    <div className="flex flex-col items-center space-y-6 p-4 sm:p-6 w-full max-w-2xl mx-auto overflow-hidden">
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
         <button
           className={`px-6 py-3 text-lg font-bold rounded-lg border-2 ${mode === "clock" ? "bg-green-500 text-white" : "bg-green-700 text-white"}`}
           onClick={() => handleModeSwitch("clock")}
@@ -119,25 +119,25 @@ export default function HomeComponent() {
           Countdown
         </button>
       </div>
-
+  
       {mode === "clock" && (
-        <div className="relative w-130 h-40 bg-black text-green-400 font-mono flex flex-col justify-center items-center rounded-lg border-8 border-gray-600 shadow-xl p-6">
-          <div className="flex items-center space-x-3 text-[4.5rem] font-bold">
+        <div className="relative w-full max-w-[320px] sm:max-w-[360px] h-auto p-4 sm:p-6 bg-black text-green-400 font-mono flex flex-col justify-center items-center rounded-lg border-8 border-gray-600 shadow-xl">
+          <div className="flex items-center space-x-3 text-[2.5rem] sm:text-[4rem] font-bold">
             <span>{`${hours}:${minutes}:${seconds}`}</span>
-            <span className="text-[2rem] bg-green-500 text-black px-2 py-1 rounded-lg">
-              {period}
-            </span>
           </div>
+          <span className="text-[1.5rem] sm:text-[2rem] bg-green-500 text-black px-2 py-1 rounded-lg">
+            {period}
+          </span>
         </div>
-      )}
-
+      )} 
+  
       {mode === "stopwatch" && (
         <>
-          <div className="relative w-[360px] h-[160px] bg-black text-green-400 font-mono flex flex-col justify-center items-center rounded-lg border-8 border-gray-600 shadow-xl p-6">
-            <div className="text-5xl font-bold">{formatTime(stopwatchTime)}</div>
+          <div className="relative w-full max-w-[320px] sm:max-w-[360px] h-auto p-4 sm:p-6 bg-black text-green-400 font-mono flex flex-col justify-center items-center rounded-lg border-8 border-gray-600 shadow-xl">
+            <div className="text-4xl sm:text-5xl font-bold">{formatTime(stopwatchTime)}</div>
           </div>
-
-          <div className="flex space-x-4 mt-4">
+  
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-4">
             <button
               className={`px-5 py-3 border ${isRunning ? "border-red-500 text-red-400" : "border-green-500 text-green-400"} rounded-lg flex items-center space-x-2`}
               onClick={() => {
@@ -149,7 +149,7 @@ export default function HomeComponent() {
               {isRunning ? <StopCircle size={24} /> : <Play size={24} />}
               <span>{isRunning ? "Stop" : "Start"}</span>
             </button>
-
+  
             <button
               className="px-5 py-3 border border-yellow-500 text-yellow-400 rounded-lg flex items-center space-x-2"
               onClick={() => setIsPaused(!isPaused)}
@@ -161,7 +161,7 @@ export default function HomeComponent() {
           </div>
         </>
       )}
-
+  
       {mode === "countdown" && (
         <>
           <div className="flex flex-col items-center space-y-4">
@@ -177,8 +177,8 @@ export default function HomeComponent() {
                 <span className="text-lg">minutes</span>
               </div>
             )}
-
-            <div className="flex space-x-4">
+  
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
               {isRunning && (
                 <button
                   className="px-4 py-2 rounded text-white bg-red-500"
@@ -191,7 +191,7 @@ export default function HomeComponent() {
                   Stop Countdown
                 </button>
               )}
-
+  
               {isRunning && (
                 <button
                   className={`px-4 py-2 rounded text-white ${isPaused ? "bg-green-500" : "bg-yellow-500"}`}
@@ -201,7 +201,7 @@ export default function HomeComponent() {
                 </button>
               )}
             </div>
-
+  
             {!isRunning && (
               <button
                 className="px-4 py-2 rounded text-white bg-blue-500"
@@ -214,13 +214,16 @@ export default function HomeComponent() {
                 Start Countdown
               </button>
             )}
-            <div className="relative w-[360px] h-[160px] bg-black text-green-400 font-mono flex flex-col justify-center items-center rounded-lg border-8 border-gray-600 shadow-xl p-6">
-              <div className="text-5xl font-bold">{formatTime(countdownTime)}</div>
+  
+            <div className="relative w-full max-w-[320px] sm:max-w-[360px] h-auto p-4 sm:p-6 bg-black text-green-400 font-mono flex flex-col justify-center items-center rounded-lg border-8 border-gray-600 shadow-xl">
+              <div className="text-4xl sm:text-5xl font-bold">{formatTime(countdownTime)}</div>
             </div>
           </div>
-
         </>
       )}
     </div>
   );
+  
+  
+  
 }
