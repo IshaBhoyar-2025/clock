@@ -10,8 +10,19 @@ export default function Page() {
       </main>
 
       
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-      <p>.... Design by &copy; Isha 2025....</p>
+      <footer className="row-start-3 flex flex-wrap items-center justify-center gap-6">
+        <p>
+          .. Design by &copy;{" "}
+          <a
+            href="https://portfolio-isha-pi.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline"
+          >
+            Isha Bhoyar 2025
+          </a>{" "}
+          ..
+        </p>
       </footer>
     </div>
   );
